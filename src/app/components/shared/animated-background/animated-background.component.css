@@ -1,0 +1,91 @@
+@keyframes float1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-40px, 30px) scale(0.9);
+  }
+  66% {
+    transform: translate(50px, -20px) scale(1.1);
+  }
+}
+
+@keyframes float3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(20px, 40px) scale(1.05);
+  }
+  66% {
+    transform: translate(-30px, -30px) scale(0.95);
+  }
+}
+
+@keyframes float4 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-25px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(35px, 25px) scale(0.9);
+  }
+}
+
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(180deg, #FF6B9D 0%, #C239B3 100%);
+  top: -10%;
+  left: 10%;
+  animation: float1 20s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(180deg, #4F46E5 0%, #7C3AED 100%);
+  top: 40%;
+  right: 10%;
+  animation: float2 25s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 550px;
+  height: 550px;
+  background: linear-gradient(180deg, #06B6D4 0%, #3B82F6 100%);
+  bottom: -10%;
+  left: 30%;
+  animation: float3 22s ease-in-out infinite;
+}
+
+.blob-4 {
+  width: 450px;
+  height: 450px;
+  background: linear-gradient(180deg, #F59E0B 0%, #EF4444 100%);
+  top: 20%;
+  right: 30%;
+  animation: float4 18s ease-in-out infinite;
+}
