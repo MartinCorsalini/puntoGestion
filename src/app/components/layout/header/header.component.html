@@ -1,171 +1,63 @@
-<!-- Navbar -->
-<nav class="navbar navbar-glass fixed top-0 z-50 shadow-sm">
-  <div class="max-w-7xl mx-auto w-full px-4">
-    
-    <!-- Mobile Menu Button -->
-    <div class="flex-none lg:hidden">
-      <button (click)="toggleMobileMenu()" class="btn btn-ghost btn-circle">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
-    </div>
+<header
+  class="navbar fixed top-0 left-0 w-full bg-base-100/90 backdrop-blur-md shadow-md z-50 justify-center">
+  <nav class="max-w-4xl w-full flex items-center justify-between px-6 py-0">
 
     <!-- Logo -->
-    <div class="flex-1">
-      <a routerLink="/" class="flex items-center gap-3 px-2">
-        <img
-          src="assets/images/logo/logoPGcolor.png"
-          alt="Punto Gestión Logo"
-          class="h-10 w-auto object-contain"
-        />
-      </a>
-    </div>
-
-    <!-- Desktop Menu -->
-    <div class="flex-none hidden lg:flex">
-      <ul class="menu menu-horizontal px-1 gap-2">
-        
-        <!-- Inicio -->
-        <li>
-          <a routerLink="/" routerLinkActive="text-pink-600" [routerLinkActiveOptions]="{exact: true}" class="nav-link font-medium hover:text-pink-600">
-            Inicio
-          </a>
-        </li>
-
-        <!-- Productos Dropdown -->
-        <li class="dropdown dropdown-hover">
-          <div tabindex="0" role="button" class="nav-link font-medium hover:text-pink-600">
-            Productos
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-            </svg>
-          </div>
-          <ul tabindex="0" class="dropdown-content menu p-3 shadow-xl rounded-2xl w-72 mt-4 gap-1">
-            <li *ngFor="let product of products">
-              <a [routerLink]="product.route" class="flex items-start gap-3 p-3 rounded-xl hover:bg-pink-50">
-                <div class="w-10 h-10 bg-gradient-to-br from-pink-500/20 to-purple-600/20 rounded-lg flex items-center justify-center flex-shrink-0">
-                  {{product.icon}}
-                </div>
-                <div>
-                  <div class="font-semibold text-gray-900">{{product.name}}</div>
-                  <div class="text-xs text-gray-500">{{product.description}}</div>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Servicios -->
-        <li>
-          <a routerLink="/servicios" routerLinkActive="text-pink-600" class="nav-link font-medium hover:text-pink-600">
-            Servicios
-          </a>
-        </li>
-
-        <!-- Nosotros -->
-        <li>
-          <a routerLink="/nosotros" routerLinkActive="text-pink-600" class="nav-link font-medium hover:text-pink-600">
-            Nosotros
-          </a>
-        </li>
-
-        <!-- Contacto -->
-        <li>
-          <a routerLink="/contacto" routerLinkActive="text-pink-600" class="nav-link font-medium hover:text-pink-600">
-            Contacto
-          </a>
-        </li>
-
-      </ul>
-    </div>
-
-    <!-- CTA Button -->
-    <div class="flex-none ml-4">
-      <a routerLink="/contacto" class="btn bg-gradient-to-r from-pink-500 to-purple-600 text-white border-0 hover:scale-105 transition-transform rounded-full px-6 hidden sm:flex">
-        Consultar
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-</nav>
-
-<!-- Mobile Menu Overlay -->
-<div 
-  *ngIf="isMobileMenuOpen" 
-  class="fixed inset-0 bg-black/50 z-40 lg:hidden"
-  (click)="closeMobileMenu()"
-></div>
-
-<!-- Mobile Drawer -->
-<div 
-  class="mobile-menu fixed top-0 left-0 h-full w-80 p-6 space-y-4 z-50 transform transition-transform duration-300 lg:hidden"
-  [class.translate-x-0]="isMobileMenuOpen"
-  [class.-translate-x-full]="!isMobileMenuOpen"
->
-  
-  <!-- Mobile Logo -->
-  <div class="flex items-center justify-between mb-8">
-    <div class="flex items-center gap-3">
+     <div class="flex justify-center items-center w-full translate-x-6">
+    <button (click)="scrollTo('inicio')" class="flex items-center group">
       <img
-        src="assets/images/logoPGcolor.png"
-        alt="Punto Gestión Logo"
-        class="h-10 w-auto object-contain"
-      />
-    </div>
-    <button (click)="closeMobileMenu()" class="btn btn-ghost btn-sm btn-circle">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
+        src="assets/images/logosPuntoGestion/fhPunto-Gestion_BLANCO.png"
+        alt="Punto Gestión"
+        class="h-16" />
     </button>
-  </div>
-
-  <!-- Mobile Menu Items -->
-  <ul class="menu space-y-2">
-    <li><a routerLink="/" (click)="closeMobileMenu()" class="text-lg font-medium">Inicio</a></li>
-    
-    <li>
-      <details>
-        <summary class="text-lg font-medium">Productos</summary>
-        <ul class="space-y-1 mt-2">
-          <li *ngFor="let product of products">
-            <a [routerLink]="product.route" (click)="closeMobileMenu()" class="text-base">
-              {{product.icon}} {{product.name}}
-            </a>
-          </li>
-        </ul>
-      </details>
-    </li>
-    
-    <li><a routerLink="/servicios" (click)="closeMobileMenu()" class="text-lg font-medium">Servicios</a></li>
-    <li><a routerLink="/nosotros" (click)="closeMobileMenu()" class="text-lg font-medium">Nosotros</a></li>
-    <li><a routerLink="/contacto" (click)="closeMobileMenu()" class="text-lg font-medium">Contacto</a></li>
-  </ul>
-
-  <!-- Mobile CTA -->
-  <div class="pt-4">
-    <a routerLink="/contacto" (click)="closeMobileMenu()" class="btn w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white border-0">
-      Consultar Ahora
-    </a>
-  </div>
-
-  <!-- Contact Info -->
-  <div class="pt-8 space-y-3 text-sm text-gray-600">
-    <div class="flex items-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-      </svg>
-      <a href="tel:+542234893423" class="hover:text-pink-600">(0223) 489-3423</a>
     </div>
-    <div class="flex items-center gap-2">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-      </svg>
-      <a href="mailto:info@punto-gestion.com" class="hover:text-pink-600">info&#64;punto-gestion.com</a>
-    </div>
-  </div>
 
-</div>
+    <!-- Menu -->
+     <div class="flex justify-center items-center">
+    <ul class="flex items-center space-x-10 font-medium text-sm text-gray-700">
+      @for (link of ['quienes-somos', 'servicios', 'contacto']; track $index) {
+        <li>
+          <button
+            (click)="scrollTo(link)"
+            class="relative btn btn-ghost text-sm capitalize transition-all duration-300 hover:text-[#ff7ba9] hover:after:content-[''] hover:after:absolute hover:after:bottom-0 hover:after:left-0 hover:after:w-full hover:after:h-[2px] hover:after:bg-[#ff7ba9] whitespace-nowrap">
+            {{ link.replace('-', ' ') }}
+          </button>
+        </li>
+      }
+
+      <!-- Dropdown Productos -->
+      <li class="relative">
+        <button
+          (click)="toggleDropdown = !toggleDropdown"
+          class="btn btn-ghost text-sm capitalize transition-all duration-300 hover:text-[#ff7ba9] flex items-center">
+          Productos
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-3.5 h-3.5 ml-1 transition-transform duration-200"
+            [class.rotate-180]="toggleDropdown"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        @if (toggleDropdown) {
+          <ul
+            class="absolute left-0 mt-2 w-52 rounded-lg bg-white shadow-lg border border-pink-100 animate-fade-in-down">
+            @for (product of products; track $index) {
+              <li>
+                <a
+                  (click)="scrollTo('productos')"
+                  class="block px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-[#ff7ba9] transition-colors duration-300 cursor-pointer">
+                  {{ product }}
+                </a>
+              </li>
+            }
+          </ul>
+        }
+      </li>
+    </ul>
+    </div>
+  </nav>
+</header>
